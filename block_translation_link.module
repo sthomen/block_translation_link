@@ -1,24 +1,19 @@
 <?php
 /**
- * @file
- * Plug a hole in block for translatable blocks
- */
-
-/**
  * Implements hook_menu_alter()
  */
 function block_translation_link_menu_alter(&$items) {
-	$items['admin/structure/block/manage/%/translation']['context']=MENU_CONTEXT_INLINE;
+  $items['admin/structure/block/manage/%/translation']['context'] = MENU_CONTEXT_INLINE;
 }
 
 /** 
  * Implements hook_block_view_alter()
  */
 function block_translation_link_block_view_alter(&$data, $block) {
-	if ($block->module == 'block') {
-		$data['content']['#contextual_links']['block_translation_link']=array(
-			'admin/structure/block/manage',
-			array($block->delta, 'translate')
-		);
-	}
+  if ($block->module == 'block') {
+    $data['content']['#contextual_links']['block_translation_link'] = array(
+      'admin/structure/block/manage',
+      array($block->delta, 'translate')
+    );
+  }
 }
